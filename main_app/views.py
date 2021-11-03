@@ -19,7 +19,7 @@ class TrailDelete(DeleteView):
     success_url = '/trails/'
 
 
-class TrailCreate(CreateView):
+class TrailCreate(LoginRequiredMixin,CreateView):
     model = Trail
     fields = ['name', 'location', 'description', 'length']
     success_url = '/trails/'
@@ -34,7 +34,7 @@ def about(request):
 
 @login_required
 def trails_index(request):
-    trails = Trail.objects.all()
+    trails = Trail.objects.filter(user=request.user)
     return render(request, 'trails/index.html', {'trails': trails})
 
 
