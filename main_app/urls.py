@@ -15,6 +15,6 @@ urlpatterns = [
          views.TrailDelete.as_view(), name='trails_delete'),
     path('trails/<int:trail_id>/assoc_activity/<int:activity_id>/',views.assoc_activity, name='assoc_activity'),
     path('trails/<int:trail_id>/unassoc_activity/<int:activity_id>/',views.unassoc_activity, name='unassoc_activity'),
-
+    path('accounts/signup/', views.signup, name='signup'),
 
 ]
