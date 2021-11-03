@@ -37,19 +37,21 @@ def trails_detail(request, trail_id):
     url = "https://api.openweathermap.org/data/2.5/find?q={}&units=metric&appid=74e08e29a06113b27d6bba189d6e2c27"
 
     print(trail.location)
-    r = requests.get(url.format(trail.location)).json()
-    # data = json.loads(r.text)
+    r = requests.get(url.format(trail.location))
+    c = list(filter(lambda item : item['sys']['country'] == 'CA', r['list']))[0]
+    data = json.loads(r)
+    
 
-    # city_weather = {
-    #     'city': data['name'],
-    #     'temperature': data['main']['temp'],
-    #     'description': data['weather'][0]['description'],
-    #     'icon': data['weather'][0]['icon'],
-    #     'speed': data['wind']['speed'],
-    # }
+    city_weather = {
+        'city': data['name'],
+        'temperature': data['main']['temp'],
+        'description': data['weather'][0]['description'],
+        'icon': data['weather'][0]['icon'],
+        'speed': data['wind']['speed'],
+    }
 
-    # context = {'city_weather': city_weather }
-    context = { 'all_weather': r['list'] }
+    context = {'city_weather': city_weather }
+    # context = { 'all_weather': r['list'] }
     return render(request, 'trails/detail.html', {'trail': trail, 'activities': activities_trail_doesnt_have}, context)
 
 
