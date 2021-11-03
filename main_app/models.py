@@ -19,6 +19,7 @@ class Trail(models.Model):
     description = models.CharField(max_length=100)
     length = models.IntegerField()
     activities = models.ManyToManyField(Activity)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
