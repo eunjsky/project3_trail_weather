@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card">
+    <div class="card-content">
+        <span class="card-title">{{ trail.name }}</span>
+        <p>Location: {{ trail.location }}</p>
+        <p>Description: {{ trail.description }}</p>
+        <p>Length: {{ trail.length }}km</p>
+    </div>
+    <div class="card-action">
+        <a href="{% url 'trails_update' trail.id %}">Edit</a>
+        <a href="{% url 'trails_delete' trail.id %}">Delete</a>
+    </div>
+</div>
+
+<hr />
+<div class="row">
+    <div class="col s6">
+        <h3>{{ trail.name }}'s activities</h3>
+        {% if trail.activities.count %} {% for activity in trail.activities.all %}
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">
+                    <span>{{ activity.name }}</span>
+                </span>
+            </div>
+            <div class="card-action">
+                <form action="{% url 'unassoc_activity' trail.id activity.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn">Remove</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %} {% else %}
+        <h5>No activities :(</h5>
+        {% endif %}
+    </div>
+</div>
+</div>
+<!-- Available activities will come after this line -->
+<div class="col s6">
+    <h3>Available activities</h3>
+    {% if activities.count %}
+    {% for activity in activities.all %}
+    <div class="card">
+        <div class="card-content">
+            <span class="card-title">
+                <span>{{ activity.name }}</span>
+            </span>
+        </div>
+
+        <div class="card-action">
+            <form action="{% url 'assoc_activity' trail.id activity.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn">Add</button>
+            </form>
+        </div>
+        {% endfor %}
+        {% else %}
+        <h5>{{trail.name}} Already Has All Activities Available</h5>
+        {% endif %}
+    </div>
+
+    <div>
+        {% for weather in all_weather %}
+        <div class="card">
+            <div class="card-content">
+                <div class="weather-box">
+
+                    <a href="{% url 'detail' weather.id %}">
+                        <h5>{{ weather.name }} - {{ weather.sys.country }}</h5>
+                    </a>
+                    {% for c in weather.weather %}
+                    <img src="http://openweathermap.org/img/w/{{ c.icon }}.png" width="60px" alt="Image">
+                    <div>Weather conditions: {{ c.description }}</div>
+                    {% endfor %}
+                    <div>Temperature: {{ weather.main.temp }} <sup>o</sup>C</div>
+
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% endblock %}

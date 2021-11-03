@@ -1,0 +1,33 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="main-box" align="center">
+    <h3>Weather in your city</h3>
+    <form method="POST">{% csrf_token %}
+        <input type="text" class="input" name="city" placeholder="City Name">
+        <button type="submit">Search</button>
+    </form>
+    <!-- <div>Date: {{ day }} </div> -->
+
+    <div>
+        {% for weather in all_weather %}
+        <div class="card">
+            <div class="card-content">
+                <div class="weather-box">
+
+                    <a href="{% url 'detail' weather.id %}">
+                        <h5>{{ weather.name }} - {{ weather.sys.country }}</h5>
+                    </a>
+                    {% for c in weather.weather %}
+                    <img src="http://openweathermap.org/img/w/{{ c.icon }}.png" width="60px" alt="Image">
+                    <div>Weather conditions: {{ c.description }}</div>
+                    {% endfor %}
+                    <div>Temperature: {{ weather.main.temp }} <sup>o</sup>C</div>
+
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% endblock %}
