@@ -66,6 +66,7 @@
 <!-- Available activities will come after this line -->
 
 <div class="col s6">
+    <div class="row row-cols-1 row-cols-md-2 g-4">
     <h3>Available activities</h3>
     {% if activities.count %}
     {% for activity in activities.all %}
@@ -83,6 +84,7 @@
                 <input type="submit" class="card-link" value="ADD">
             </form>
         </div>
+    </div>
         {% endfor %}
         {% else %}
         <h5>{{trail.name}} Already Has All Activities Available</h5>
