@@ -19,10 +19,11 @@ class TrailDelete(DeleteView):
     success_url = '/trails/'
 
 
-class TrailCreate(LoginRequiredMixin,CreateView):
+class TrailCreate(LoginRequiredMixin, CreateView):
     model = Trail
     fields = ['name', 'location', 'description', 'length']
     success_url = '/trails/'
+
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
@@ -46,19 +47,20 @@ def trails_detail(request, trail_id):
     url = "https://api.openweathermap.org/data/2.5/find?q={}&units=metric&appid=74e08e29a06113b27d6bba189d6e2c27"
 
     print(trail.location)
-    r = requests.get(url.format(trail.location)).json()
-    # data = json.loads(r.text)
+    r = requests.get(url.format(trail.location))
+    # c = list(filter(lambda item : item['sys']['country'] == 'CA', r['list']))[0]
+    data = json.loads(r)
 
-    # city_weather = {
-    #     'city': data['name'],
-    #     'temperature': data['main']['temp'],
-    #     'description': data['weather'][0]['description'],
-    #     'icon': data['weather'][0]['icon'],
-    #     'speed': data['wind']['speed'],
-    # }
+    city_weather = {
+        'city': data['name'],
+        'temperature': data['main']['temp'],
+        'description': data['weather'][0]['description'],
+        'icon': data['weather'][0]['icon'],
+        'speed': data['wind']['speed'],
+    }
 
-    # context = {'city_weather': city_weather }
-    context = { 'all_weather': r['list'] }
+    context = {'city_weather': city_weather}
+    # context = { 'all_weather': r['list'] }
     return render(request, 'trails/detail.html', {'trail': trail, 'activities': activities_trail_doesnt_have}, context)
 
 
@@ -77,19 +79,18 @@ def weathers_index(request):
         city = request.POST['city']
     else:
         city = 'Toronto'
-    
+
     url = "https://api.openweathermap.org/data/2.5/find?q={}&units=metric&appid=74e08e29a06113b27d6bba189d6e2c27"
 
     r = requests.get(url.format(city)).json()
- 
-    
-    context = { 'all_weather': r['list'] }
-        
-    return render(request, 'weathers/index.html', context )
+
+    context = {'all_weather': r['list']}
+
+    return render(request, 'weathers/index.html', context)
 
 
 def weathers_detail(request, city_id):
-    
+
     url = "https://api.openweathermap.org/data/2.5/weather?id={}&units=metric&appid=74e08e29a06113b27d6bba189d6e2c27"
 
     r = requests.get(url.format(city_id))
@@ -103,19 +104,20 @@ def weathers_detail(request, city_id):
         'speed': data['wind']['speed'],
     }
 
-    context = {'city_weather': city_weather }
+    context = {'city_weather': city_weather}
     return render(request, 'weathers/detail.html', context)
 
+
 def signup(request):
-  error_message = ''
-  if request.method == 'POST':
-    form = UserCreationForm(request.POST)
-    if form.is_valid():
-      user = form.save()
-      login(request, user)
-      return redirect('index')
-    else:
-      error_message = 'Invalid sign up - try again'
-  form = UserCreationForm()
-  context = {'form': form, 'error_message': error_message}
-  return render(request, 'registration/signup.html', context)
+    error_message = ''
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('index')
+        else:
+            error_message = 'Invalid sign up - try again'
+    form = UserCreationForm()
+    context = {'form': form, 'error_message': error_message}
+    return render(request, 'registration/signup.html', context)
