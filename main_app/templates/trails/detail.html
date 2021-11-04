@@ -35,11 +35,13 @@
 
 
 <hr />
+
 <div class="row">
     <div class="col-4">
         <h5>{{ trail.name }}'s activities</h5>
         {% if trail.activities.count %} {% for activity in trail.activities.all %}
-        <div class="card">
+        <div class="card" style="width: 18rem;">
+            <ul class="list-group list-group-flush">
             <div class="card-content">
                 <span class="card-title">
                     
@@ -47,11 +49,11 @@
                 </span>
             </div>
         
-        
+        </ul> 
             <div class="card-action">
                 <form action="{% url 'unassoc_activity' trail.id activity.id %}" method="post">
                     {% csrf_token %}
-                    <button type="submit" class="btn">Remove</button>
+                    <input type="submit" class="card-link" value="REMOVE">
                 </form>
             </div>
         </div>
@@ -62,31 +64,23 @@
 </div>
 </div>
 <!-- Available activities will come after this line -->
-<div class="container">
-    <div class="row">
-      <div class="col">col</div>
-      <div class="col">col</div>
-      <div class="w-100"></div>
-      <div class="col">col</div>
-      <div class="col">col</div>
-    </div>
-  </div>
 
 <div class="col s6">
     <h3>Available activities</h3>
     {% if activities.count %}
     {% for activity in activities.all %}
-    <div class="card">
+    <div class="card" style="width: 18rem;">
+        <ul class="list-group list-group-flush">
         <div class="card-content">
             <span class="card-title">
                 <span>{{ activity.name }}</span>
             </span>
         </div>
-
+    </ul> 
         <div class="card-action">
             <form action="{% url 'assoc_activity' trail.id activity.id %}" method="post">
                 {% csrf_token %}
-                <button type="submit" class="btn">Add</button>
+                <input type="submit" class="card-link" value="ADD">
             </form>
         </div>
         {% endfor %}
