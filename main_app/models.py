@@ -20,6 +20,7 @@ class Weather(models.Model):
 class Trail(models.Model):
     name = models.CharField(max_length=50)
     location = models.CharField(max_length=100)
+    country = models.CharField(max_length=2, default="CA")
     description = models.CharField(max_length=100)
     length = models.IntegerField()
     activities = models.ManyToManyField(Activity)

@@ -14,7 +14,7 @@
             <div class="card-content">
                 <div class="weather-box">
 
-                    <a href="{% url 'detail' weather.id %}">
+                    <a href="{% url 'details' weather.id %}">
                         <h5>{{ weather.name }} - {{ weather.sys.country }}</h5>
                     </a>
                     {% for c in weather.weather %}

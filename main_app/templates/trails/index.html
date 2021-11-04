@@ -9,11 +9,13 @@
         <a href="{% url 'detail' trail.id %}">
             <span class="card-title">{{ trail.name }}</span>
             <p>Location: {{ trail.location }}</p>
+            <p>Country: {{ trail.country }}</p>
             <p>Description: {{ trail.description }}</p>
             <p>Length: {{ trail.length }}km</p>
         </a>
     </div>
 </div>
 {% endfor %}
+
 
 {% endblock %}
