@@ -17,21 +17,23 @@
             </div>
         </div>
     </div>
-    <div class="col s6"> 
-        <div class="card">
-            <div class="card-content">
-                <div class="weather-box">
-                    <p> Current weather </p>
-                    <h5>{{ city_weather.city }}</h5>
-                    <img src="http://openweathermap.org/img/w/{{ city_weather.icon }}.png" alt="Image">
-                    <div>Weather conditions: {{ city_weather.description }}</div>
-                    <div>Temperature: {{ city_weather.temperature }} <sup>o</sup>C</div>
-                    <div>Wind speed: {{ city_weather.speed}} m/s</div>
+ <div class="weatherbackground">  
+        <div class="col s6"> 
+            <div class="card">
+                <div class="card-content">
+                    <div class="weather-box">
+                        <p> Current weather </p>
+                        <h5>{{ city_weather.city }}</h5>
+                        <img src="http://openweathermap.org/img/w/{{ city_weather.icon }}.png" alt="Image">
+                        <div>Weather conditions: {{ city_weather.description }}</div>
+                        <div>Temperature: {{ city_weather.temperature }} <sup>o</sup>C</div>
+                        <div>Wind speed: {{ city_weather.speed}} m/s</div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</div> 
 
 
 <hr />
@@ -66,18 +68,18 @@
 <!-- Available activities will come after this line -->
 
 <div class="col s6">
-    <div class="row row-cols-1 row-cols-md-2 g-4">
-    <h3>Available activities</h3>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+    <h5>Available activities</h5>
     {% if activities.count %}
     {% for activity in activities.all %}
     <div class="card" style="width: 18rem;">
-        <ul class="list-group list-group-flush">
+        <!-- <ul class="list-group list-group-flush"> -->
         <div class="card-content">
             <span class="card-title">
                 <span>{{ activity.name }}</span>
             </span>
         </div>
-    </ul> 
+    <!-- </ul>  -->
         <div class="card-action">
             <form action="{% url 'assoc_activity' trail.id activity.id %}" method="post">
                 {% csrf_token %}
