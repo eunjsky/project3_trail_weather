@@ -16,13 +16,14 @@
         <nav>
             <div class="nav-wrapper">
                 <ul>
-                    <li><a href="/" class="left brand-logo">&nbsp;&nbsp;Trail</a></li>
+                    <li class="left brand-logo">&nbsp;&nbsp;Trail</li>
                 </ul>
                 <ul class="right">
                     <li><a href="{% url 'about' %}">About</a></li>
                     {% if user.is_authenticated %}
                       <li><a href="{% url 'trails_create' %}">Add a Trail</a></li>
                       <li><a href="{% url 'index' %}">View All Trails</a></li>
+                      <li><a href="{% url 'weather_index' %}">Current Weather</a></li>
                       <li><a href="{% url 'logout' %}">Log Out</a></li>
                     {% else %}
                       <li><a href="{% url 'signup' %}">Sign Up</a></li>
