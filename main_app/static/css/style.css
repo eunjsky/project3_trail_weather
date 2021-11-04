@@ -12,3 +12,11 @@ body {
     padding-top: 0;
     text-align: right;
   }
+
+
+.navbar-default .navbar-fnt {
+    color: #FFFFFF;
+}
+.navbar-default .navbar-backgrnd {
+    color: #CC3333;
+}  
