@@ -46,17 +46,22 @@ def trails_detail(request, trail_id):
 
     url = "https://api.openweathermap.org/data/2.5/weather?q={},{}&appid=74e08e29a06113b27d6bba189d6e2c27"
 
+    message = ''
+
     r = requests.get(url.format(trail.location, trail.country)).json()
 
-    city_weather = {
-        'city': r['name'],
-        'temperature': r['main']['temp'],
-        'description': r['weather'][0]['description'],
-        'icon': r['weather'][0]['icon'],
-        'speed': r['wind']['speed'],
-    }
+    if trail.location == r['name']:
+        city_weather = {
+            'city': r['name'],
+            'temperature': r['main']['temp'],
+            'description': r['weather'][0]['description'],
+            'icon': r['weather'][0]['icon'],
+            'speed': r['wind']['speed'],
+        }
+    else:
+        message = 'Location is Invalid - please check the location again'
 
-    return render(request, 'trails/detail.html', {'city_weather': city_weather, 'trail': trail, 'activities': activities_trail_doesnt_have})
+    return render(request, 'trails/detail.html', {'city_weather': city_weather, 'trail': trail, 'activities': activities_trail_doesnt_have}, message)
 
 
 def assoc_activity(request, trail_id, activity_id):

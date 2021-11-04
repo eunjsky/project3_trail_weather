@@ -1,16 +1,25 @@
 {% extends 'base.html' %}
-
 {% block content %}
+
 {% if object %}
-<h1>Edit <span class="teal-text">{{object.name}}</span></h1>
+<a style="background: none; color: #516D6C; cursor: pointer; padding: 8px;margin-top: 10px; float:right;" href="{% url 'detail' trail.id %}">back</a>
+<h3 style="color:#516D6C; font-weight: bold;">Edit
+<span class="teal-text">{{object.name}}</span></h3>
+
+<br />
+
 {% else %}
-<h1>Add trail</h1>
+<h3 style="color:#516D6C; font-weight: bold;">Add a Trail</h3>
 {% endif %}
 <form action="" method="post">
     {% csrf_token %}
     <table>
         {{ form.as_table }}
     </table>
-    <input type="submit" value="Submit" class="btn">
+    <input type="submit" value="Submit" class="btn-bl" style="background: none; color: #465850;font-weight: bold; border: 1px solid #465850;; margin: 20px 0; cursor: pointer; padding: 10px; float: right; ">
+    
 </form>
 {% endblock %}
+
+
+

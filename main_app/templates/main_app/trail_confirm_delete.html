@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Delete Trail</h1>
+<h3 style="color:#516D6C; font-weight: bold;" >Delete a Trail</h3>
 
-<h4>Are you sure you want to delete <span class="teal-text">{{ object.name }}</span>?</h4>
+<h4>Are you sure you want to delete <span class="teal-text" style="font-weight: bold;">{{ object.name }}</span>?</h4>
 
 <form action="" method="POST">
     {% csrf_token %}
-    <input type="submit" value="Yes - Delete!" class="btn">
-    <a href="{% url 'detail' trail.id %}">Cancel</a>
+    <input type="submit" value="Yes - Delete!" class="btn-bl" style="background: none; color: #465850;font-weight: bold; border: 1px solid #465850;; margin-top: 20px; cursor: pointer; padding: 10px;">
+    <a style="background: none; color: #516D6C;font-weight: bold; border: 1px solid #516D6C;; margin-top: 20px; cursor: pointer; padding: 10px;" href="{% url 'detail' trail.id %}">Cancel</a>
 </form>
 {% endblock %}
