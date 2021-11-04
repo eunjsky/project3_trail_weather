@@ -13,6 +13,6 @@ footer.page-footer {
   text-align: right;
 }
 
-.nav-wrapper {
-  background-color: brown;
+a:link {
+  text-decoration: none;
 }

@@ -1,20 +1,27 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Trail List</h1>
+<h3 style="color:#606d51; font-weight: bold;">Trail List</h3>
 
 {% for trail in trails %}
-<div class="card">
+<div class="row">
+<div class="card" style="background-color: #eadecf;">
     <div class="card-content">
-        <a href="{% url 'detail' trail.id %}">
-            <span class="card-title">{{ trail.name }}</span>
-            <p>Location: {{ trail.location }}</p>
-            <p>Country: {{ trail.country }}</p>
-            <p>Description: {{ trail.description }}</p>
-            <p>Length: {{ trail.length }}km</p>
-        </a>
+      <a a href="{% url 'detail' trail.id %}" class="card-title" style="font-weight: bold; color: #585046">{{ trail.name }}</a></h5>
+      <hr />
+        <p>Location: {{ trail.location }}</p>
+        <p>Country: {{ trail.country }}</p>
+        <p>Description: {{ trail.description }}</p>
+        <p>Length: {{ trail.length }}km</p>
+        
+
     </div>
+  </div>
 </div>
+
+
+
+
 {% endfor %}
 
 
