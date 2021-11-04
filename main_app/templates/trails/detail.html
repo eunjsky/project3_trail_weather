@@ -95,21 +95,5 @@
         {% endif %}
     </div>
 
-    <div class="col s6"> 
-        <div class="card">
-            <div class="card-content">
-                <div class="weather-box">
-                    <p> Current weather
-                        <h5>{{ city_weather.city }}</h5>
-                        <img src="http://openweathermap.org/img/w/{{ city_weather.icon }}.png" alt="Image">
-                        <div>Weather conditions: {{ city_weather.description }}</div>
-                        <div>Temperature: {{ city_weather.temperature }} <sup>o</sup>C</div>
-                        <div>Wind speed: {{ city_weather.speed}} m/s</div>
-    
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
 
     {% endblock %}

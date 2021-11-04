@@ -2,10 +2,11 @@
 {% block content %}
 
 <h3 style="color:#606d51; font-weight: bold;">Trail List</h3>
-
+<hr />
+<br />
 {% for trail in trails %}
 <div class="row">
-<div class="card" style="background-color: #eadecf;">
+<div class="card" style="background-color: #f1e9df;">
     <div class="card-content">
       <a a href="{% url 'detail' trail.id %}" class="card-title" style="font-weight: bold; color: #585046">{{ trail.name }}</a></h5>
       <hr />

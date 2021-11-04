@@ -1,14 +1,14 @@
 {% extends 'base.html' %} {% block content %}
 
-<div class="main-box" align="center">
-    <h3>Weather in your city</h3>
+<div class="main-box">
+    <h3 style="color:#516D6C; font-weight: bold;">Current Weather</h3>
     <form method="POST">{% csrf_token %}
-        <input type="text" class="input" name="city" placeholder="City Name">
-        <button type="submit">Search</button>
+        <input type="text" class="input" name="city" placeholder="Search for location" >
+        <button type="submit" style="background: none; color: #465850;font-weight: bold; border: 1px solid #465850;; margin: 20px 0; cursor: pointer; padding: 10px;"> Search</button>
     </form>
-    <!-- <div>Date: {{ day }} </div> -->
+    
 
-    <div>
+    <div align="center">
         {% for weather in all_weather %}
         <div class="card">
             <div class="card-content">
