@@ -49,8 +49,8 @@ def trails_detail(request, trail_id):
     message = ''
 
     r = requests.get(url.format(trail.location, trail.country)).json()
-
-    if trail.location == r['name']:
+    print(r)
+    if r['cod'] != '404':
         city_weather = {
             'city': r['name'],
             'temperature': r['main']['temp'],
@@ -58,10 +58,12 @@ def trails_detail(request, trail_id):
             'icon': r['weather'][0]['icon'],
             'speed': r['wind']['speed'],
         }
+        return render(request, 'trails/detail.html', {'city_weather': city_weather, 'trail': trail, 'activities': activities_trail_doesnt_have, 'message': message})
+
     else:
         message = 'Location is Invalid - please check the location again'
 
-    return render(request, 'trails/detail.html', {'city_weather': city_weather, 'trail': trail, 'activities': activities_trail_doesnt_have}, message)
+    return render(request, 'trails/detail.html', {'trail': trail, 'activities': activities_trail_doesnt_have, 'message': message})
 
 
 def assoc_activity(request, trail_id, activity_id):

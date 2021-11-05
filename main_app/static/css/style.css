@@ -22,9 +22,6 @@ footer.page-footer {
   flex-direction: column;
 }
 
-main {
-  flex: 1 0 auto;
-}
 
 footer.page-footer {
   padding-top: 0;
@@ -35,19 +32,18 @@ a:link {
   text-decoration: none;
 }
 .card-link {
-  color: #ebc68e;
-  background-color: white;
+  color: #f5b656;
+  background-color: #f1e9df;
   border: none;
 }
 
-.card-action {
+/* .card-action {
   color: #ebc68e;
   background-color: white;
   border: none;
-}
+} */
 
 
-.weatherbackground{
-  background: url('/images/forest.jpeg');
-}
+
+
 

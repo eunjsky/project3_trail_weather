@@ -19,10 +19,10 @@
                     </a>
                     {% for c in weather.weather %}
                     <img src="http://openweathermap.org/img/w/{{ c.icon }}.png" width="60px" alt="Image">
-                    <div>Weather conditions: {{ c.description }}</div>
+                    <div style="text-align: center;">Weather conditions: {{ c.description }}</div>
                     {% endfor %}
                     <div>Temperature: {{ weather.main.temp }} <sup>o</sup>C</div>
-
+                    <div>Wind Speed: {{ weather.wind.speed }} m/s</div>
 
                 </div>
             </div>
