@@ -50,7 +50,7 @@ def trails_detail(request, trail_id):
     message = ''
 
     r = requests.get(url.format(trail.location, trail.country)).json()
-    print(r)
+    # print(r)
     if r['cod'] != '404':
         city_weather = {
             'city': r['name'],
@@ -87,15 +87,16 @@ def weathers_index(request):
     url = "https://api.openweathermap.org/data/2.5/find?q={}&units=metric&appid=74e08e29a06113b27d6bba189d6e2c27"
 
     r = requests.get(url.format(city)).json()
-    message = ''
-    context = {'all_weather': r['list']}
     print(r)
-    # if city in r['list']:
-    #     return render(request, 'weathers/index.html', context)
-    # else:
-    #     message = 'Location is Invalid - Please check the name of location again'
-
-    return render(request, 'weathers/index.html', context)
+    message = ''
+    if r['cod'] != '400':
+        print('its working')
+        context = {'all_weather': r['list']}
+        return render(request, 'weathers/index.html', context)
+    else:
+        print('not working')
+        message = 'Location is Invalid - Please check the name of location again'
+        return render(request, 'weathers/index.html', {'message': message})
 
 
 @login_required
