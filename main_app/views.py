@@ -54,6 +54,7 @@ def trails_detail(request, trail_id):
         city_weather = {
             'city': r['name'],
             'temperature': r['main']['temp'],
+            'Feels Like': r['main']['feels_like'],
             'description': r['weather'][0]['description'],
             'icon': r['weather'][0]['icon'],
             'speed': r['wind']['speed'],
@@ -101,6 +102,7 @@ def weathers_detail(request, city_id):
     city_weather = {
         'city': data['name'],
         'temperature': data['main']['temp'],
+        'feelslike': data['main']['feels_like'],
         'description': data['weather'][0]['description'],
         'icon': data['weather'][0]['icon'],
         'speed': data['wind']['speed'],
