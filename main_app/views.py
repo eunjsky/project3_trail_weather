@@ -39,6 +39,7 @@ def trails_index(request):
     return render(request, 'trails/index.html', {'trails': trails})
 
 
+@login_required
 def trails_detail(request, trail_id):
     trail = Trail.objects.get(id=trail_id)
     activities_trail_doesnt_have = Activity.objects.exclude(
@@ -62,7 +63,7 @@ def trails_detail(request, trail_id):
         return render(request, 'trails/detail.html', {'city_weather': city_weather, 'trail': trail, 'activities': activities_trail_doesnt_have, 'message': message})
 
     else:
-        message = 'Location is Invalid - please check the location again'
+        message = 'Location is Invalid - Please check the location again'
 
     return render(request, 'trails/detail.html', {'trail': trail, 'activities': activities_trail_doesnt_have, 'message': message})
 
@@ -86,12 +87,18 @@ def weathers_index(request):
     url = "https://api.openweathermap.org/data/2.5/find?q={}&units=metric&appid=74e08e29a06113b27d6bba189d6e2c27"
 
     r = requests.get(url.format(city)).json()
-
+    message = ''
     context = {'all_weather': r['list']}
+    print(r)
+    # if city in r['list']:
+    #     return render(request, 'weathers/index.html', context)
+    # else:
+    #     message = 'Location is Invalid - Please check the name of location again'
 
     return render(request, 'weathers/index.html', context)
 
 
+@login_required
 def weathers_detail(request, city_id):
 
     url = "https://api.openweathermap.org/data/2.5/weather?id={}&units=metric&appid=74e08e29a06113b27d6bba189d6e2c27"
