@@ -22,9 +22,6 @@ footer.page-footer {
   flex-direction: column;
 }
 
-main {
-  flex: 1 0 auto;
-}
 
 footer.page-footer {
   padding-top: 0;
@@ -35,7 +32,20 @@ a:link {
   text-decoration: none;
 }
 .card-link {
+  color: rgb(250, 245, 226);
+  background-color: #b8b0a3;
+  border: none;
+}
+
+
+
+/* .card-action {
   color: #ebc68e;
   background-color: white;
   border: none;
-}
+} */
+
+
+
+
+

@@ -6,24 +6,22 @@
         <input type="text" class="input" name="city" placeholder="Search for location" style="color: #fff;" >
         <button type="submit" style="background: none; color: #fff;font-weight: bold; border: 1px solid #fff;; margin: 20px 0; cursor: pointer; padding: 10px;"> Search</button>
     </form>
-    
-     
-        
-    <div class="card-group"> 
-        <div align="center">
-            {% for weather in all_weather %}
-            <div class="card" style="background:rgba(213, 214, 184, 0.86); width:400px; border-radius: 25px;">
-                <div class="card-content">
-    
-                        <a style="color: #3A4B3D;" href="{% url 'details' weather.id %}">
-                            <h5>{{ weather.name }} - {{ weather.sys.country }}</h5>
-                        </a>
-                        {% for c in weather.weather %}
-                        <img src="http://openweathermap.org/img/w/{{ c.icon }}.png" width="60px" alt="Image">
-                        <div>Weather conditions: {{ c.description }}</div>
-                        {% endfor %}
-                        <div>Temperature: {{ weather.main.temp }} <sup>o</sup>C</div>
-                        <br/>
+    <div align="center">
+        {% for weather in all_weather %}
+        <div class="card">
+            <div class="card-content">
+                <div class="weather-box">
+
+                    <a href="{% url 'details' weather.id %}">
+                        <h5>{{ weather.name }} - {{ weather.sys.country }}</h5>
+                    </a>
+                    {% for c in weather.weather %}
+                    <img src="http://openweathermap.org/img/w/{{ c.icon }}.png" width="60px" alt="Image">
+                    <div style="text-align: center;">Weather conditions: {{ c.description }}</div>
+                    {% endfor %}
+                    <div>Temperature: {{ weather.main.temp }} <sup>o</sup>C</div>
+                    <div>Wind Speed: {{ weather.wind.speed }} m/s</div>
+
                 </div>
             </div>
         {% endfor %}
