@@ -8,12 +8,12 @@ By providing weather information, you can find weather information where you wan
 
 ## Screenshot(s):
 
-![main page](static/images/home.jpg)
-![about page](static/images/about.jpg)
-![add page](static/images/addtrail.jpg)
-![trail-list page](static/images/Viewstrail.jpg)
-![detail page](static/images/detail.jpg)
-![weather page](static/images/currentweather.jpg)
+![main page](main_app/static/images/home.jpg)
+![about page](main_app/static/images/about.jpg)
+![add page](main_app/static/images/addtrail.jpg)
+![trail-list page](main_app/static/images/Viewstrail.jpg)
+![detail page](main_app/static/images/detail.jpg)
+![weather page](main_app/static/images/currentweather.jpg)
 
 ## Technologies Used:
 
@@ -21,11 +21,11 @@ Django, Python, PostgreSQL, Bootstrap, HTML, CSS, Heroku
 
 ## Getting Started:
 
-Heroku: [Click](https://trailcollector.herokuapp.com/)
+Heroku: [Click](main_app/https://trailcollector.herokuapp.com/)
 
-![Trello](static/images/Trello.jpg)
-![Wireframe](static/images/Wireframe.jpg)
-![ERD](static/images/ERD.jpg)
+![Trello](main_app/static/images/Trello.jpg)
+![Wireframe](main_app/static/images/Wireframe.jpg)
+![ERD](main_app/static/images/ERD.jpg)
 
 ## Next Steps:
 
