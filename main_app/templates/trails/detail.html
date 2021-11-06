@@ -1,27 +1,31 @@
-{% extends 'base.html' %}
+{% extends 'basesecond.html' %}
 {% block content %}
 {% load static %}
 
     <div class="row">
         <div class="col s6"> 
-            <div class="card" style="background-color: #b8b0a3 ;">
-                <div class="card-content">
-                    <span class="card-title">{{ trail.name }}</span>
-                        <p>Location: {{ trail.location }}</p>
-                        <p>Country: {{ trail.country }}</p>
+            <!-- <img src="{% static '/images/path23.jpg' %}" class="card" alt="image" width="100%" height="230px"
+             style="opacity: 80%;">  -->
+            <div class="card" style="opacity: 75%;" >
+                <!-- <div class="card-content" style="margin-top:-240px; color: #f4ae45; opacity: 78%; text-align:center;
+              background: white;  padding: 10px;"> -->
+              <div class="card-content" style="background-color: rgba(213, 214, 184, 0.86);">
+                    <span class="card-title"><h5>{{ trail.name }}</h5></span>
+                        <p>Location: {{ trail.location }},Country: {{ trail.country }}</p>
                         <p>Description: {{ trail.description }}</p>
                         <p>Length: {{ trail.length }}km</p>
                 </div>
-                <div class="card-action">
-                    <a href="{% url 'trails_update' trail.id %}" style="color: rgb(250, 245, 226);">Edit</a>
-                    <a href="{% url 'trails_delete' trail.id %}" style="color: rgb(250, 245, 226);">Delete</a>
+                <div class="card-action" style="background-color: rgba(213, 214, 184, 0.86)">
+                    <a href="{% url 'trails_update' trail.id %}" style="color:rgba(94, 94, 80, 0.86)">Edit</a>
+                    <a href="{% url 'trails_delete' trail.id %}" style="color:rgba(94, 94, 80, 0.86)">Delete</a>
                 </div>
             </div>
         </div>
         <div class="col s6" > 
                 <div>
                     <img src="{% static '/images/forest121.jpg' %}" class="card" alt="image" width="100%" height="230px">
-                    <div class="card-content" style="margin-top:-245px; color: #d89734; opacity: 90%; text-align:center;">
+                    <div class="card-content" style="margin-top:-245px; color: #d89734; opacity: 78%; text-align:center;
+                    background: white; ">
                         <div class="weather-box">
                             <p> Current weather </p>
                             <h5 >{{ city_weather.city }}</h5>
@@ -36,10 +40,10 @@
         </div> 
     <hr />
     <div class="row" >
-        <h5>{{ trail.name }}'s Activities</h5>
+        <h5 style="color: #EAEADB;">{{ trail.name }}'s Activities</h5>
         <div class="col-4" style= " display:flex;  justify-content: space-evenly ">
             {% if trail.activities.count %} {% for activity in trail.activities.all %}
-            <div class="card" style="width: 18rem;  background-color: #b8b0a3; margin:5px;">
+            <div class="card" style="width: 18rem;  background-color: rgba(213, 214, 184, 0.86); margin:5px;">
                 <ul class="list-group list-group-flush" >
                 <div class="card-content" >
                     <span class="card-title">
@@ -51,7 +55,7 @@
                 <div class="card-action">
                     <form action="{% url 'unassoc_activity' trail.id activity.id %}" method="post">
                         {% csrf_token %}
-                        <input type="submit" class="card-link" value="REMOVE" style="color: rgb(250, 245, 226); background-color: #b8b0a3; border: none;">
+                        <input type="submit" value="REMOVE" style="color: rgba(94, 94, 80, 0.86); background-color: rgba(213, 214, 184, 0.86); border: none;">
                     </form>
                 </div>
             </div>
@@ -63,12 +67,12 @@
     </div>
     <!-- Available activities will come after this line -->
 
-    <h5>Available activities</h5>
+    <h5 style="color: #EAEADB;">Available Activities</h5>
     <div class="col-4">
     <div class="row row-cols-1 row-cols-md-3 g-4" style= " display:flex;  justify-content: space-evenly">
         {% if activities.count %}
         {% for activity in activities.all %}
-        <div class="card" style="width: 18rem; background-color: #b8b0a3; margin:5px;">
+        <div class="card" style="width: 18rem; background-color: rgba(213, 214, 184, 0.86); margin:5px; ">
             <!-- <ul class="list-group list-group-flush"> -->
             <div class="card-content">
                 <span class="card-title">
@@ -79,7 +83,7 @@
             <div class="card-action">
                 <form action="{% url 'assoc_activity' trail.id activity.id %}" method="post">
                     {% csrf_token %}
-                    <input type="submit" class="card-link" value="ADD" style="color: rgb(250, 245, 226); background-color: #b8b0a3; border: none;">
+                    <input type="submit" value="ADD" style="color: rgba(94, 94, 80, 0.86); background-color: rgba(213, 214, 184, 0.86); border: none;">
                 </form>
             </div>
         </div>
