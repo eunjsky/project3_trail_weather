@@ -4,7 +4,7 @@
 
     <div class="row">
         <div class="col s6"> 
-            <div class="card" style="background-color: #dcc9af ;">
+            <div class="card" style="background-color: #b8b0a3 ;">
                 <div class="card-content">
                     <span class="card-title">{{ trail.name }}</span>
                         <p>Location: {{ trail.location }}</p>
@@ -39,7 +39,7 @@
         <h5>{{ trail.name }}'s Activities</h5>
         <div class="col-4" style= " display:flex;  justify-content: space-evenly ">
             {% if trail.activities.count %} {% for activity in trail.activities.all %}
-            <div class="card" style="width: 18rem;  background-color: #dcc9af  ">
+            <div class="card" style="width: 18rem;  background-color: #b8b0a3  ">
                 <ul class="list-group list-group-flush" >
                 <div class="card-content" >
                     <span class="card-title">
@@ -68,7 +68,7 @@
     <div class="row row-cols-1 row-cols-md-3 g-4" style= " display:flex;  justify-content: space-evenly">
         {% if activities.count %}
         {% for activity in activities.all %}
-        <div class="card" style="width: 18rem; background-color: #dcc9af ">
+        <div class="card" style="width: 18rem; background-color: #b8b0a3 ">
             <!-- <ul class="list-group list-group-flush"> -->
             <div class="card-content">
                 <span class="card-title">
