@@ -23,9 +23,9 @@ Django, Python, PostgreSQL, Bootstrap, HTML, CSS, Heroku
 
 Heroku: [Click](https://trailcollector.herokuapp.com/)
 
-![Trello](static/images/Trello.jpg)
-![Wireframe](static/images/Wireframe.jpg)
-![ERD](static/images/ERD.jpg)
+![Trello](main_app/static/images/Trello.jpg)
+![Wireframe](main_app/static/images/Wireframe.jpg)
+![ERD](main_app/static/images/ERD.jpg)
 
 ## Next Steps:
 
