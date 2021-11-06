@@ -31,13 +31,11 @@ footer.page-footer {
 a:link {
   text-decoration: none;
 }
-.card-link {
-  color: rgb(250, 245, 226);
-  background-color: #b8b0a3;
+/* .card-link {
+  color: rgba(94, 94, 80, 0.86);
+  background-color:rgba(213, 214, 184, 0.86);
   border: none;
-}
-
-
+} */
 
 /* .card-action {
   color: #ebc68e;
