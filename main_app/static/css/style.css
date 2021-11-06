@@ -32,10 +32,12 @@ a:link {
   text-decoration: none;
 }
 .card-link {
-  color: #f5b656;
-  background-color: #f1e9df;
+  color: rgb(250, 245, 226);
+  background-color: #dcc9af ;
   border: none;
 }
+
+
 
 /* .card-action {
   color: #ebc68e;

@@ -1,13 +1,11 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'basesecond.html' %} {% block content %}
 
-<div class="main-box">
-    <h3 style="color:#516D6C; font-weight: bold;">Current Weather</h3>
+<div>
+    <h3 style="color:#D5D6B8; font-weight: bold;">Current Weather</h3>
     <form method="POST">{% csrf_token %}
-        <input type="text" class="input" name="city" placeholder="Search for location" >
-        <button type="submit" style="background: none; color: #465850;font-weight: bold; border: 1px solid #465850;; margin: 20px 0; cursor: pointer; padding: 10px;"> Search</button>
+        <input type="text" class="input" name="city" placeholder="Search for location" style="color: #fff;" >
+        <button type="submit" style="background: none; color: #fff;font-weight: bold; border: 1px solid #fff;; margin: 20px 0; cursor: pointer; padding: 10px;"> Search</button>
     </form>
-    
-
     <div align="center">
         {% for weather in all_weather %}
         <div class="card">
@@ -23,11 +21,14 @@
                     {% endfor %}
                     <div>Temperature: {{ weather.main.temp }} <sup>o</sup>C</div>
                     <div>Wind Speed: {{ weather.wind.speed }} m/s</div>
-
                 </div>
             </div>
-        </div>
         {% endfor %}
+        </div>
     </div>
+    <br/>
+    <br/>
+        
+            
+{% endblock %}
 
-    {% endblock %}

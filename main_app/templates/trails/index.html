@@ -1,15 +1,14 @@
-{% extends 'base.html' %}
+{% extends 'basesecond.html' %}
 {% block content %}
-
 
 <h3 style="color:#606d51; font-weight: bold;">Trail List</h3>
 <hr />
 <br />
 {% for trail in trails %}
 <div class="row">
-<div class="card" style="background-color: #f1e9df;">
+<div class="card" style="background:rgba(213, 214, 184, 0.76); border-radius: 25px;">
     <div class="card-content">
-      <a a href="{% url 'detail' trail.id %}" class="card-title" style="font-weight: bold; color: #585046">{{ trail.name }}</a></h5>
+      <a a href="{% url 'detail' trail.id %}" class="card-title" style="font-weight: bold; color: #3A4B3D">{{ trail.name }}</a></h5>
       <hr />
         <p>Location: {{ trail.location }}</p>
         <p>Country: {{ trail.country }}</p>

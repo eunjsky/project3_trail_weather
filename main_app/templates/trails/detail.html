@@ -4,7 +4,7 @@
 
     <div class="row">
         <div class="col s6"> 
-            <div class="card" style="background-color: #f1e9df;">
+            <div class="card" style="background-color: #dcc9af ;">
                 <div class="card-content">
                     <span class="card-title">{{ trail.name }}</span>
                         <p>Location: {{ trail.location }}</p>
@@ -13,8 +13,8 @@
                         <p>Length: {{ trail.length }}km</p>
                 </div>
                 <div class="card-action">
-                    <a href="{% url 'trails_update' trail.id %}">Edit</a>
-                    <a href="{% url 'trails_delete' trail.id %}">Delete</a>
+                    <a href="{% url 'trails_update' trail.id %}" style="color: rgb(250, 245, 226);">Edit</a>
+                    <a href="{% url 'trails_delete' trail.id %}" style="color: rgb(250, 245, 226);">Delete</a>
                 </div>
             </div>
         </div>
@@ -37,9 +37,9 @@
     <hr />
     <div class="row" >
         <h5>{{ trail.name }}'s Activities</h5>
-        <div class="col-4" style= " display:flex;  justify-content: space-evenly">
+        <div class="col-4" style= " display:flex;  justify-content: space-evenly ">
             {% if trail.activities.count %} {% for activity in trail.activities.all %}
-            <div class="card" style="width: 18rem; background-color: #f1e9df;">
+            <div class="card" style="width: 18rem;  background-color: #dcc9af  ">
                 <ul class="list-group list-group-flush" >
                 <div class="card-content" >
                     <span class="card-title">
@@ -68,7 +68,7 @@
     <div class="row row-cols-1 row-cols-md-3 g-4" style= " display:flex;  justify-content: space-evenly">
         {% if activities.count %}
         {% for activity in activities.all %}
-        <div class="card" style="width: 18rem; background-color: #f1e9df;">
+        <div class="card" style="width: 18rem; background-color: #dcc9af ">
             <!-- <ul class="list-group list-group-flush"> -->
             <div class="card-content">
                 <span class="card-title">
@@ -87,7 +87,8 @@
             {% else %}
             <h5>{{trail.name}} Already Has All Activities Available</h5>
             {% endif %}
-        </div>
+    </div>
+
 
 
     {% endblock %}

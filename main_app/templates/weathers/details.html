@@ -1,22 +1,30 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'basesecond.html' %} {% block content %}
 
-<h3>Weather Details</h3>
+<div align="center">
+<h3 style="color:#D5D6B8; font-weight: bold;">Current Weather in {{ city_weather.city }}</h3>
+<br />
 
-<div>
-    <div class="card">
-        <div class="card-content">
-            <div class="weather-box">
-                <p> Current weather
-                    <h5>{{ city_weather.city }}</h5>
+    <div class="card" style="background:rgba(234, 234, 219, 0.616); width:400px; border-radius: 25px;">
+                <div class="card-content">
+                
+                    <a style="background: none; color: #000; cursor: pointer; float:right" href="{% url 'weather_index' %}">back</a>
+                    <br/>
+                    <h5 style="color: #3A4B3D; font-weight: bold;">{{ city_weather.city }}</h5>
                     <img src="http://openweathermap.org/img/w/{{ city_weather.icon }}.png" alt="Image">
+                
                     <div>Weather conditions: {{ city_weather.description }}</div>
                     <div>Temperature: {{ city_weather.temperature }} <sup>o</sup>C</div>
+                    <div>Feels Like: {{ city_weather.feelslike }} <sup>o</sup>C</div>
                     <div>Wind speed: {{ city_weather.speed}} m/s</div>
-
-                </p>
+                    <br/>
+                
             </div>
         </div>
     </div>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
 </div>
 
 {% endblock %}
