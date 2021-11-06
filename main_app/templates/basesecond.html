@@ -11,13 +11,11 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
         <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     </head>
-    <body>
-    <div
-    class="bg-image"
+    <body class="bg-image"
     style="
       background-image: url('https://images.unsplash.com/photo-1508144322886-717c284ab392?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80');
-      height: 100%;"
-    >
+      background-size:auto;">
+    
         <header class="navbar-fixed">
             <nav class="navbar navbar-light" style="background-color: #6D6C51;">
                 <div class="nav-wrapper">
@@ -43,7 +41,7 @@
             {% block content %}
             {% endblock %}
         </main>
-    </div>
+    
         <footer class="page-footer" style="background-color: #8A8973;">
             <div class="right">All Rights Reserved, &copy; 2021 Trail &nbsp;</div>
         </footer>
